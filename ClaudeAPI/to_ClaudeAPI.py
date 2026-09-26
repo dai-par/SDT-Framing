@@ -27,6 +27,4 @@ def to_claude():
 
     output = message.content[1].text
 
-    return jsonify(
-        output
-    )
+    return jsonify(output)
