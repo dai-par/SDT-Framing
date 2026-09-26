@@ -11,6 +11,9 @@
         <button type="submit" class="submit_btn" id="submit_btn">
         {% if output %}完了{% else %}✉︎Send{% endif %}
         </button>
+        {% if output %}
+            {{ output }}
+        {% endif %}
     </form>
     
 </body>
