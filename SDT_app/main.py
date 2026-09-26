@@ -2,8 +2,8 @@ from flask import Flask, render_template, request, redirect, jsonify
 import requests
 
 app = Flask(__name__)
-
-
+app.config['JSON_AS_ASCII'] = False
+app.json.ensure_ascii = False
 
 @app.route("/")
 def index():
@@ -14,6 +14,9 @@ def index():
 @app.route("/upload", methods=["POST"])
 def upload():
     message = request.form.get("message")
-    data = {"message": message}
 
-    return jsonify(data[0])
+    response = requests.post(
+        "http://127.0.0.1:5001/to_claude",
+        json = {"message": message})
+
+    return response.json()

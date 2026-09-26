@@ -5,10 +5,10 @@ import os
 
 app = Flask(__name__)
 
-@app.route("/to_claude", methods = ["POST"])
+@app.route("/to_claude", methods = ["POST","GET"])
 def to_claude():
-    response = requests.get("http://127.0.0.1:5000/upload")
-    data = response.json()
+    data = request.get_json()
+    print(data)
 
     client = ap.Anthropic(
         api_key = os.environ.get("ANTHOROPIC_API_KEY")
