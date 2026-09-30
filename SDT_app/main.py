@@ -19,4 +19,9 @@ def upload():
         "http://127.0.0.1:5001/to_claude",
         json = {"message": message})
 
-    return response.json()
+    output = response.json()
+
+    return render_template(
+        "index.html",
+        output = output
+    )

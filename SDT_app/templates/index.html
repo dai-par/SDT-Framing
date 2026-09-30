@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>How shoud I say?</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}">
 </head>
 <body>
+    <h1>How shoud I say ?</h1>
+    <br>
+    <h3>You can text what you want to say.</h3>
+    <section class="upload-section">
     <form action="/upload" method="post">
-        <div class="text-area"><input type="text" name="message" class="tag_form" placeholder="入力" required></div>
+        <div class="text-area"><input type="text" name="message" class="tag_form" placeholder="What do you want to say?" required></div>
         <button type="submit" class="submit_btn" id="submit_btn">
         {% if output %}完了{% else %}✉︎Send{% endif %}
         </button>
-        {% if output %}
-            {{ output }}
-        {% endif %}
     </form>
-    
+    </section>
+        {% if output %}
+            <div class="outputfield">{{ output | safe }}</div>
+        {% endif %}
 </body>
 </html>
